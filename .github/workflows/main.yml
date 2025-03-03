@@ -16,9 +16,8 @@ jobs:
 
       - name: Authenticate with Google Cloud
         run: |
-          echo "${{ secrets.GCP_CREDENTIALS }}" > $HOME/gcloud.json
-          export GOOGLE_APPLICATION_CREDENTIALS=$HOME/gcloud.json
-        shell: bash
+          echo '${{ secrets.GCP_CREDENTIALS }}' > $HOME/gcloud.json
+          echo "GOOGLE_APPLICATION_CREDENTIALS=$HOME/gcloud.json" >> $GITHUB_ENV
 
       - name: Setup Google Cloud SDK
         uses: google-github-actions/auth@v1
@@ -38,7 +37,6 @@ jobs:
         run: terraform plan -out=tfplan
         working-directory: GKE
         env:
-          GOOGLE_APPLICATION_CREDENTIALS: $HOME/gcloud.json
           GOOGLE_PROJECT: ${{ secrets.GCP_PROJECT_ID }}
           GOOGLE_REGION: ${{ secrets.GCP_REGION }}
 
@@ -46,8 +44,8 @@ jobs:
         run: terraform apply -auto-approve tfplan
         working-directory: GKE
         env:
-          GOOGLE_APPLICATION_CREDENTIALS: $HOME/gcloud.json
           GOOGLE_PROJECT: ${{ secrets.GCP_PROJECT_ID }}
           GOOGLE_REGION: ${{ secrets.GCP_REGION }}
+
 
 
