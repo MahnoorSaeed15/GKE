@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "feisty-gateway-452608-c9",
+  "private_key_id": "801fbb56bd908791964b52b04a508c4d4120bacb",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDB23YA4d33NkFE\np4WfXyFiM235J1pbuzet1GpTi7ji5NzAs0EvZm6xGxhrGAmpd12uYJ0WLAFG+6i+\nDCZJC91geistHOguHYDe9TJ3SNvpLdNYSuNKHGJNgIpzhiL8neMnHFWVEWfO5dV4\nlVdHfoaPQKpACvM1klw0He3xs/Oz0vALPt0Q/Q/ZmxnCH+1WI3lBWtvqAsIR/ZT6\niQOiY5hqQIeWRqFeZEuLHJ/o7ox/pS7wm6zk+vjIXKuRdMdcPV9UOeNrMnfYZuf4\nBdt/AHA2cQYx9gfddwgiJnSuJFJO4p9kdzlg9+qgT0ghqo2WXyjR7XlKqiZgOOau\nWr8ttAF3AgMBAAECggEAVelgnnt61zggLMDhIwQR02dfcW/TR5vszQi6JlRhl4w9\nmNjYJp2KqMqNQ8jfX08bIVCHzW+rET4uRis0PGMZtMvvnoqVCvrgRe78cojDjM9W\nPmbR2+JAXoB82z2y+6ktJgQUmX+hNbv9ovbsOy8DizDpQoCX0EIQwrgQ33EUq7gm\nWZ8JAMZwwCn9egfq3j+YZBTIbjv9xq9F9/ymerBdrbesOg320L9QIXXgwXYyNoJ5\n+JgfLDCs3ddc8neSsBe2OebMO/vA6O/5+Akj8Qk4Inik8ZBVRU1jfSJVMJUTC7qC\n+wYUZqqLT5S82onQ+4TV5zH+KD/VQJX5y6AISWv6gQKBgQDhbgB8l9bqr3ehaAFB\nMINMoWh6so44+SASWNSPhca6jAZAYow1BX4rK8pjH/L5DgdRapmBAcTHUMbuPOyf\n4MAyEsEuJ/ZHLT3fTwT4St6E/ur1cZf6uRf4FzvQWlth4vssYExyPrfq8Nw2T9h7\nGF1y2mO+4RJqS2ohg0Em1rCcMQKBgQDcJWS2knfkcgDMVWsZ8/Zao0ktd92i2Kc+\nhZ4LMXWxbROVkBT0hUS/g9Ri3kl/GCn4yQNoUKZ6G/xP+4n6NyzgYa/vzLyogCOd\nKXO4Isag5e62gnr44+X70XeUDFWnC3+GAZWBY6AgdJr5/gtebHfPCMeOiH7UgrXJ\nj7T5CWAWJwKBgAWac16lc40f0WxspmNVbl4QQQWTvJ9D6f0qwhXTMG5gnqMpD+0d\ndtZh30T5fVOdeqcWbDxdq+N8aYVwdD1BG+Xiu3SHP8LjJ/+N+kSlr8REhdiV+z4b\nLbJX+X+jT1QujSm8Nwo77txjIkYjU/EzWNdLAGG1PHzx5PByT8NEYN1xAoGAO2cL\nqggTudzZQkm6QKKH0yVEVbSGZa64UjKT1sldzKZ2JmFehix/xH26DYOVqWnHyY3U\nEY3Rnhl3F830CURiI5m4c6h3L7CD66CHzSP1HO1uYGkM7aPxJuX6skQxyIVdv7cl\ntGhBiQBt4Q8f2jbCjWb9EgTa1FUA4IaaeqiA+PkCgYAXImIUByEuTFEXctVvJUER\n0JkS13daD9iRRj+JLrsasptKLVZGL1V96biOOLNlS/b/Bnp8O4WDa1VUNfC0Fd6m\nU/Ik7OkeJqrGPuCdIaARaFYcqEUcTWlZvNc5PrOG/QXqTP0OgPajI2j8dXMddOrj\ngnN6LPJWNmHtIZXEal9sRQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "terraform-admin@feisty-gateway-452608-c9.iam.gserviceaccount.com",
+  "client_id": "113496668632437684446",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/terraform-admin%40feisty-gateway-452608-c9.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
