@@ -19,11 +19,12 @@ jobs:
         with:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
-      - name: Setup Google Cloud SDK
+      - name: Setup Google Cloud SDK and Authentication
         run: |
           echo '${{ secrets.GCP_CREDENTIALS }}' > $HOME/gcloud.json
           chmod 600 $HOME/gcloud.json
           echo "GOOGLE_APPLICATION_CREDENTIALS=$HOME/gcloud.json" >> $GITHUB_ENV
+          ls -la $HOME  # Debugging step to check if the file exists
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
@@ -51,3 +52,4 @@ jobs:
           GOOGLE_APPLICATION_CREDENTIALS: $HOME/gcloud.json
           GOOGLE_PROJECT: ${{ secrets.GCP_PROJECT_ID }}
           GOOGLE_REGION: ${{ secrets.GCP_REGION }}
+
