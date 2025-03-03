@@ -14,10 +14,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Authenticate with Google Cloud
-        uses: google-github-actions/auth@v1
-        with:
-          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
+      - name: Set up Google Cloud authentication
+        run: echo '${{ secrets.GCP_CREDENTIALS }}' > $HOME/gcloud.json
 
       - name: Setup Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v1
@@ -30,11 +28,8 @@ jobs:
       - name: Initialize Terraform
         run: terraform init
         working-directory: GKE
-
-      - name: Terraform Format Check
-        run: terraform fmt -check -recursive || true
-        working-directory: GKE
-
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: $HOME/gcloud.json
 
       - name: Terraform Validate
         run: terraform validate
@@ -44,14 +39,14 @@ jobs:
         run: terraform plan -out=tfplan
         working-directory: GKE
         env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+          GOOGLE_APPLICATION_CREDENTIALS: $HOME/gcloud.json
           GOOGLE_PROJECT: ${{ secrets.GCP_PROJECT_ID }}
 
       - name: Terraform Apply
         run: terraform apply -auto-approve tfplan
         working-directory: GKE
         env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+          GOOGLE_APPLICATION_CREDENTIALS: $HOME/gcloud.json
           GOOGLE_PROJECT: ${{ secrets.GCP_PROJECT_ID }}
 
 
