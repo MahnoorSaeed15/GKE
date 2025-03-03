@@ -1,5 +1,11 @@
 provider "google" {
-  project     = "feisty-gateway-452608-c9"
-  region      = "us-central1"
-  credentials = file(var.credentials_file)
+  credentials = file("terraform-key.json")
+  project     = var.project_id
+  region      = var.region
+}
+
+provider "google-beta" {
+  credentials = file("terraform-key.json")
+  project     = var.project_id
+  region      = var.region
 }
