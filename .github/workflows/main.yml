@@ -23,6 +23,11 @@ jobs:
         run: |
           echo '${{ secrets.GCP_CREDENTIALS }}' > $HOME/gcloud.json
           chmod 600 $HOME/gcloud.json
+          ls -lah $HOME
+        shell: bash
+
+      - name: Set GOOGLE_APPLICATION_CREDENTIALS
+        run: echo "GOOGLE_APPLICATION_CREDENTIALS=$HOME/gcloud.json" >> $GITHUB_ENV
         shell: bash
 
       - name: Setup Terraform
@@ -33,8 +38,6 @@ jobs:
       - name: Initialize Terraform
         run: terraform init
         working-directory: GKE
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: $HOME/gcloud.json
 
       - name: Validate Terraform Configuration
         run: terraform validate
@@ -43,15 +46,8 @@ jobs:
       - name: Terraform Plan
         run: terraform plan -out=tfplan
         working-directory: GKE
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: $HOME/gcloud.json
-          GOOGLE_PROJECT: ${{ secrets.GCP_PROJECT_ID }}
-          GOOGLE_REGION: ${{ secrets.GCP_REGION }}
 
       - name: Terraform Apply
         run: terraform apply -auto-approve tfplan
         working-directory: GKE
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: $HOME/gcloud.json
-          GOOGLE_PROJECT: ${{ secrets.GCP_PROJECT_ID }}
-          GOOGLE_REGION: ${{ secrets.GCP_REGION }}
+
