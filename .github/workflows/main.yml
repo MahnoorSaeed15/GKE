@@ -20,7 +20,10 @@ jobs:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
       - name: Save Google Credentials to File
-        run: echo '${{ secrets.GCP_CREDENTIALS }}' > $HOME/gcloud.json
+        run: |
+          echo '${{ secrets.GCP_CREDENTIALS }}' > $HOME/gcloud.json
+          chmod 600 $HOME/gcloud.json
+        shell: bash
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
@@ -52,4 +55,3 @@ jobs:
           GOOGLE_APPLICATION_CREDENTIALS: $HOME/gcloud.json
           GOOGLE_PROJECT: ${{ secrets.GCP_PROJECT_ID }}
           GOOGLE_REGION: ${{ secrets.GCP_REGION }}
-
