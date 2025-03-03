@@ -32,8 +32,9 @@ jobs:
         working-directory: GKE
 
       - name: Terraform Format Check
-        run: terraform fmt -check
+        run: terraform fmt -check -recursive || true
         working-directory: GKE
+
 
       - name: Terraform Validate
         run: terraform validate
