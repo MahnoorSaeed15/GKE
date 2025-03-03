@@ -18,28 +18,8 @@ jobs:
         uses: google-github-actions/auth@v1
         with:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
-name: Deploy to GKE using Terraform
 
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  terraform:
-    name: Terraform Deployment
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Authenticate with Google Cloud
-        uses: google-github-actions/auth@v1
-        with:
-          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
-
-      - name: Save Google Credentials to File
+      - name: Setup Google Cloud SDK
         run: |
           echo '${{ secrets.GCP_CREDENTIALS }}' > $HOME/gcloud.json
           chmod 600 $HOME/gcloud.json
@@ -53,6 +33,8 @@ jobs:
       - name: Initialize Terraform
         run: terraform init
         working-directory: GKE
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: $HOME/gcloud.json
 
       - name: Terraform Plan
         run: terraform plan -out=tfplan
@@ -69,4 +51,3 @@ jobs:
           GOOGLE_APPLICATION_CREDENTIALS: $HOME/gcloud.json
           GOOGLE_PROJECT: ${{ secrets.GCP_PROJECT_ID }}
           GOOGLE_REGION: ${{ secrets.GCP_REGION }}
-
