@@ -27,6 +27,10 @@ variable "node_count" {
   description = "Number of nodes in the node pool."
   type        = number
 }
+variable "credentials_file" {
+  default = "$HOME/gcloud.json"
+}
+
 
 variable "machine_type" {
   description = "The machine type for the nodes."
