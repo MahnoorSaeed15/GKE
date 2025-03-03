@@ -27,6 +27,11 @@ variable "node_count" {
   description = "Number of nodes in the node pool."
   type        = number
 }
+variable "credentials_path" {
+  description = "Path to Google Cloud service account credentials JSON file"
+  type        = string
+}
+
 
 variable "machine_type" {
   description = "The machine type for the nodes."
