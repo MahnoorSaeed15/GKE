@@ -1,37 +1,46 @@
-name: Deploy to GKE with Terraform
+name: Deploy to GKE using Terraform
 
 on:
   push:
     branches:
-      - main  # Change to the branch you want to trigger deployment
-
-permissions:
-  contents: read
+      - main
 
 jobs:
-  deploy:
-    name: Terraform Deployment to GKE
+  terraform:
+    name: Terraform Deployment
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Authenticate with Google Cloud
-        uses: google-github-actions/auth@v2
+      - name: Setup Google Cloud SDK
+        uses: google-github-actions/auth@v1
         with:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
-      - name: Set up Terraform
-        uses: hashicorp/setup-terraform@v2
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: 1.6.0  # Use latest stable version
+          terraform_version: 1.6.6
 
       - name: Initialize Terraform
         run: terraform init
+        working-directory: GKE
 
-      - name: Plan Terraform Deployment
+      - name: Terraform Plan
         run: terraform plan -out=tfplan
+        working-directory: GKE
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+          GOOGLE_PROJECT: ${{ secrets.GCP_PROJECT_ID }}
+          GOOGLE_REGION: ${{ secrets.GCP_REGION }}
 
-      - name: Apply Terraform Deployment
+      - name: Terraform Apply
         run: terraform apply -auto-approve tfplan
+        working-directory: GKE
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+          GOOGLE_PROJECT: ${{ secrets.GCP_PROJECT_ID }}
+          GOOGLE_REGION: ${{ secrets.GCP_REGION }}
+
